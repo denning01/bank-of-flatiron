@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
+// Define the AddTransactionForm component
 function AddTransactionForm({ addTransaction }) {
+  // State to hold the form data
   const [formData, setFormData] = useState({
     date: "",
     description: "",
@@ -8,17 +10,21 @@ function AddTransactionForm({ addTransaction }) {
     amount: "",
   });
 
+  // Function to handle changes in the input fields
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // Destructure the name and value from the event target
+    // Update the formData state with the new value for the corresponding input field
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
-    addTransaction(formData);
+    e.preventDefault(); // Prevent the default form submission behavior
+    addTransaction(formData); // Call the addTransaction function passed as a prop with the form data
+    // Reset the form data to the initial state
     setFormData({
       date: "",
       description: "",
@@ -29,7 +35,9 @@ function AddTransactionForm({ addTransaction }) {
 
   return (
     <div className="ui segment">
+      {/* Form with onSubmit handler */}
       <form className="ui form" onSubmit={handleSubmit}>
+        {/* Field for date input */}
         <div className="field">
           <label htmlFor="date">Date</label>
           <input
@@ -41,6 +49,7 @@ function AddTransactionForm({ addTransaction }) {
             required
           />
         </div>
+        {/* Field for description input */}
         <div className="field">
           <label htmlFor="description">Description</label>
           <input
@@ -53,6 +62,7 @@ function AddTransactionForm({ addTransaction }) {
             required
           />
         </div>
+        {/* Field for category input */}
         <div className="field">
           <label htmlFor="category">Category</label>
           <input
@@ -65,6 +75,7 @@ function AddTransactionForm({ addTransaction }) {
             required
           />
         </div>
+        {/* Field for amount input */}
         <div className="field">
           <label htmlFor="amount">Amount</label>
           <input
@@ -78,6 +89,7 @@ function AddTransactionForm({ addTransaction }) {
             required
           />
         </div>
+        {/* Submit button */}
         <button className="ui button" type="submit">
           Add Transaction
         </button>
@@ -87,8 +99,3 @@ function AddTransactionForm({ addTransaction }) {
 }
 
 export default AddTransactionForm;
-
-
-
-
-
